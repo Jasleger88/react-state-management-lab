@@ -76,10 +76,38 @@ const initialZombies=  (
 ]);
 
 const ZombieFighters =() => {
-    const [zombie] = React.useState(initialFighters)
     const [tean, setTeam]= React.useState([])
     const [money, setMoney] = React.useState(100)
+    const [totalAgility, setTotalAgility] = React.useState(0);
+    const [totalStrength, setTotalStrength]= React.useState(0)
 }
+
+function handleAddFighter (fighter) {
+  if (money - fighter.price > 0) {
+    const newFighter = structuredClone(fighter)
+    const newTeam = structuredClone(team)
+    newTeam.push(newFighter)
+
+    
+  }
+}
+
+function handleRemoveFighter(removeIndex) {
+  const fightToRemove = team[removeIndex];
+  console.log(removeIndex)
+  const newTeam = structuredClone(team.filter((figher, index)=> index !== removeIndex)
+  console.log(newTeam))
+
+setTotalStrength (totalStrength- fightToRemove.strength)
+    setTotalAgility(totalAgility -fightToRemove.agility)
+    setMoney(money + fightToRemove.price)
+
+    setTeam(newTeam)
+
+}
+
+
+
 
 return <>
 <div className = "ZoFighters"> 
